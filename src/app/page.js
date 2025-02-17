@@ -1,101 +1,187 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+
+const stepOne = () => {
+  return (
+    <div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold ">
+          First Name<span className="text-red-400">*</span>{" "}
+        </p>
+        <input
+          placeholder="Firstname"
+          type="text"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Last name<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="Lastname"
+          type="text"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Username<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="username"
+          type="text"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+    </div>
+  );
+};
+
+const stepTwo = () => {
+  return (
+    <div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Email<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="email@gmail.com"
+          type="email"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Phone Number<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="00000000"
+          type="number"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Password<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="Password"
+          type="password"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold">
+          Confirm Password<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="Password"
+          type="password"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+    </div>
+  );
+};
+
+const stepThree = () => {
+  return (
+    <div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold ">
+          Date of birth<span className="text-red-400">*</span>
+        </p>
+        <input
+          placeholder="email@gmail.com"
+          type="date"
+          className="w-[416px] h-auto px-3 py-[10px] bg-white text-black rounded-[6px] text-[16px] font-medium border border-[#CBD5E1] mt-2 mb-3"
+        ></input>
+      </div>
+      <div>
+        <p className="text-[#334155] text-[14px] font-semibold mb-3">
+          Profile image<span className="text-red-400">*</span>
+        </p>
+        <div className="relative bg-[#f2f4f6] p-4 w-[416px] h-[180px] rounded-[6px] text-center flex flex-col justify-center items-center ">
+          <div className="bg-white w-9 h-9 mb-2 rounded-full flex justify-center items-center">
+            <img src="imageicon.png" className="w-5 h-5 "></img>
+          </div>
+          <p className="text-black font-medium leading-5">Add Image</p>
+          <input className="absolute inset-0 opacity-0" type="file" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [currentStep, setCurrentStep] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+  const steps = [stepOne, stepTwo, stepThree];
+  const Component = steps[currentStep];
+
+  const nextStep = () => {
+    if (steps.length - 1 <= currentStep) return;
+    setCurrentStep(currentStep + 1);
+  };
+
+  const backStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <div className="w-[480px] h-[655px] bg-white rounded-lg flex flex-col justify-between p-8">
+        <div className="flex flex-col justify-between">
+          <div>
+            <img src="Logo.png" className="w-12 h-12 "></img>
+           
+              <h1 className="text-[26px] font-semibold text-[#202124] my-2">
+              Join us! 😎
+            </h1>
+            <h2 className="text-[#8E8E8E] text-[18px] font-normal mb-7">
+              Please provide all current information accurately.
+            </h2>
+              
+        
+            
+            <h1 className="text-[26px] font-semibold text-[#202124] my-2">
+              Join us! 😎
+            </h1>
+            <h2 className="text-[#8E8E8E] text-[18px] font-normal mb-7">
+              Please provide all current information accurately.
+            </h2>
+          </div>
+          <Component></Component>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div>
+          <div className="flex gap-2">
+            {currentStep != 0 && (
+              <button
+                className="bg-white text-black py-[10px] px-3 rounded-[6px] text-center text-[16px] w-[128px] font-medium border border-[#CBD5E1]"
+                onClick={backStep}
+              >
+                Back
+              </button>
+            )}
+
+            <button
+              className="py-[10px] px-3 bg-black text-white h-auto rounded-[6px] text-center text-[16px] font-medium w-full"
+              onClick={nextStep}
+            >
+              Continue{" "}
+              <span>
+                {currentStep + 1} / {steps.length}
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
